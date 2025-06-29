@@ -44,7 +44,6 @@ def rgb_light_effect(data, prob):
 
 def main():
     parser = argparse.ArgumentParser(description='Perform data augmentation on a given dataset.')
-    args = parser.parse_args()
     parser.add_argument('--input_folder', type=str, default="./input", help='the path to the input folder')
     parser.add_argument('--output_folder', type=str, default="./output", help='the path to the output folder')
     parser.add_argument('--noising', type=float, default=0.5, help='the probability of performing noising (default: 0.50)')
@@ -65,8 +64,19 @@ def main():
 
         name, ext = fname.rsplit('.', 1)
        
-        # check pcd file
-        pcd_data = np.loadtxt(path, delimiter=' ')
+        # check pcd file (assumes binary/ascii)
+        pcd_o3d = o3d.io.read_point_cloud(path)
+        pcd_points = np.asarray(pcd_o3d.points)
+        pcd_colors = np.asarray(pcd_o3d.colors)
+
+        # Ensure colors are scaled [0,255] and stacked with XYZ
+        if pcd_colors.shape[0] == 0:
+            # No color data — fill with white (255,255,255)
+            pcd_colors = np.full_like(pcd_points, 255)
+
+        pcd_colors = (pcd_colors * 255).astype(np.int32) if pcd_colors.max() <= 1.0 else pcd_colors.astype(np.int32)
+        pcd_data = np.hstack((pcd_points, pcd_colors))
+
         pcd_count = len(pcd_data)
         if pcd_count == 0:
             continue
