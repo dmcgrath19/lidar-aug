@@ -34,8 +34,3 @@ Computes local geometric features per point (e.g., planarity, linearity, omnivar
 ```
 python pcd_feat_extr.py --input sample.las --output output.las
 ```
-
-# Dataset for LAS files: 
-
-City of Surrey; Clean Harbours Exploration; Airborne Imaging Ltd., 2014, "[City of Surrey]. 2013 LiDAR Point Cloud (LAS)", https://hdl.handle.net/11272.1/AB2/WSH6QL, Abacus Data Network, V1
-
