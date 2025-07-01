@@ -1,10 +1,6 @@
 # LiDAR Point Cloud Augmentation & Feature Extraction
 
-This project provides tools to **augment** and **analyze** LiDAR point cloud data (e.g. `.pcd`, `.las`). 
-
-Point Cloud Data (Scan) Augmentation to improve diversity of scan dataset and save labeing cost.
-
-
+Point cloud data augmentation to improve diversity of datasets and save labeing cost.
 
 ---
 
@@ -27,10 +23,10 @@ python pcd_aug.py --input_folder ./input --output_folder ./augmented \
 --rgb_noising 0.5 --rgb_light_effect 0.5 --aug_num 10
 ```
 
-### 2. `pcd_feat_extr.py` - Feature extraction on las files
+### 2. `pcd_feat_gen.py` - Feature generation on las files
 
 Computes local geometric features per point (e.g., planarity, linearity, omnivariance) using PCA-based techniques via jakteristics.
 
 ```
-python pcd_feat_extr.py --input sample.las --output output.las
+python pcd_feat_gen.py --input sample.las --output output.las
 ```
