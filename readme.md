@@ -1,6 +1,10 @@
 # LiDAR Point Cloud Augmentation & Feature Extraction
 
-This project provides tools to **augment** and **analyze** LiDAR point cloud data (e.g. `.pcd`, `.las`) for use in tasks like semantic segmentation, classification, or geometry-aware machine learning. Samples used are topographic LiDAR
+This project provides tools to **augment** and **analyze** LiDAR point cloud data (e.g. `.pcd`, `.las`). 
+
+Point Cloud Data (Scan) Augmentation to improve diversity of scan dataset and save labeing cost.
+
+
 
 ---
 
